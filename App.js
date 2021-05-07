@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Joke from './components/joke'
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
+      <Text>I just dids!</Text>
+      <Joke />
       <StatusBar style="auto" />
     </View>
   );
