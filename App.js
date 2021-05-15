@@ -1,24 +1,70 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button } from 'react-native';
 import Joke from './components/joke'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>I just dids!</Text>
-      <Joke />
+    <SafeAreaView style = {{flex: 10}}>
+    <View style = {styles.container}>
+      <View style = {styles.introTextContainer}>
+        <Text style = {styles.regularText}>find </Text>
+        <Text style = {styles.boldText}>food trucks,</Text>
+        <Text style = {styles.boldText}>popup shops,</Text>
+        <Text style = {styles.boldText}>garage sales,</Text>
+        <View style = {{flexDirection: 'row'}}>
+          <Text style = {styles.regularText}>and </Text>
+          <Text style = {styles.boldText}>more</Text>
+        </View>
+        <Text style = {styles.regularText}>near you</Text>
+      </View>
+      
+      <View style = {styles.simpleButtonsContainer}>
+        <View style = {styles.simpleButton}>
+          <Text style = {{fontSize : 18 ,}}>I want to find stuff</Text>  
+        </View> 
+        <View style = {{padding: 10}}></View>
+        <View style = {styles.simpleButton}>
+          <Text style = {{fontSize : 18 , }}>I'm a business</Text>  
+        </View> 
+      </View>
+      
       <StatusBar style="auto" />
     </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 10,
+    backgroundColor:'lavender',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
   },
-});
+  introTextContainer: {
+    left : 25, 
+    flex: 2,
+    justifyContent: 'center'
+  },
+  regularText: {
+    fontFamily: 'Helvetica Neue',
+    fontSize: 32,
+  },
+  boldText: {
+    fontFamily: 'Helvetica Neue',
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+  simpleButtonsContainer: {
+    justifyContent:"flex-start", 
+    flex: 1.5,
+  },
+  simpleButton: {
+    left: 22,
+    borderWidth: 1.4,
+    borderRadius: 20,
+    padding: 8
+  }
+})
