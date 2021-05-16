@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button } from 'react-native';
-import Joke from './components/joke'
+import {IntroButton} from './components/buttons'
 
 export default function App() {
+
   return (
     <SafeAreaView style = {{flex: 10}}>
     <View style = {styles.container}>
@@ -16,23 +17,19 @@ export default function App() {
           <Text style = {styles.regularText}>and </Text>
           <Text style = {styles.boldText}>more</Text>
         </View>
-        <Text style = {styles.regularText}>near you</Text>
+        <Text style = {styles.regularText}>happening </Text>
+        <Text style = {styles.regularText}>near you </Text>
       </View>
-      
-      <View style = {styles.simpleButtonsContainer}>
-        <View style = {styles.simpleButton}>
-          <Text style = {{fontSize : 18 ,}}>I want to find stuff</Text>  
-        </View> 
+      <View style = {styles.introButtonContainer} >
+        <IntroButton text = 'I want to find stuff'/>
         <View style = {{padding: 10}}></View>
-        <View style = {styles.simpleButton}>
-          <Text style = {{fontSize : 18 , }}>I'm a business</Text>  
-        </View> 
+        <IntroButton text = 'I want to sell stuff'/>
       </View>
-      
       <StatusBar style="auto" />
     </View>
     </SafeAreaView>
   );
+
 }
 
 const styles = StyleSheet.create({
@@ -57,14 +54,10 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
   },
-  simpleButtonsContainer: {
+  introButtonContainer: {
     justifyContent:"flex-start", 
     flex: 1.5,
+    left: 18,
+    padding: 8,
   },
-  simpleButton: {
-    left: 22,
-    borderWidth: 1.4,
-    borderRadius: 20,
-    padding: 8
-  }
 })
