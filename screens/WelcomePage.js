@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
       alignItems: 'flex-start',
     },
     introTextContainer: {
-      left : 25, 
-      flex: 2,
+      left : 25,
       justifyContent: 'center'
     },
     regularText: {
