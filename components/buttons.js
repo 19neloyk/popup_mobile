@@ -45,6 +45,21 @@ export class SignUpButton extends Component {
     }
 }
 
+export class IconButton extends Component {
+    makeAlert() {
+        alert("YES")
+    }    
+    render(){
+        return (
+            <TouchableOpacity onPress = {this.makeAlert} >
+                <View style = {styles.iconButtonContainer}>
+                    <Text style = {styles.iconButtonText}> {this.props.icon} </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
+
 
 
 const styles = StyleSheet.create({
@@ -65,5 +80,17 @@ const styles = StyleSheet.create({
       fontWeight:"bold",
       color: "blue",
       left: 22,
-    } 
+    }, 
+    iconButtonContainer : {
+        backgroundColor: "grey",
+        borderRadius: 15,
+        shadowColor: '#470000',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.2,
+        elevation: 1
+    },
+    iconButtonText : {
+        color: "white",
+        fontSize: 20
+    }
 })

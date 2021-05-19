@@ -12,7 +12,7 @@ import Spacer from '../components/spacer'
         <View style = {styles.container}>
             <Spacer height = {25} />
             <Text style = {styles.businessLoginText}>Business Login</Text>
-            <Spacer height = {10} />
+            <Spacer height = {20} />
             <View style ={styles.headerContainer}>
                 <Text style = {styles.headerText}>Username</Text>
             </View>
