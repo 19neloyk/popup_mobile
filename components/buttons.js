@@ -60,6 +60,21 @@ export class IconButton extends Component {
     }
 }
 
+export class BusinessPageOptionsButton extends Component {
+    makeAlert() {
+        alert("YES")
+    }    
+    render(){
+        return (
+            <TouchableOpacity onPress = {this.makeAlert} >
+                <View style = {styles.businessPageOptionsButtonContainer}>
+                    <Text style = {styles.businessPageOptionsButtonText}> {this.props.text} </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
+
 
 
 const styles = StyleSheet.create({
@@ -87,10 +102,22 @@ const styles = StyleSheet.create({
         shadowColor: '#470000',
         shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.2,
-        elevation: 1
+        elevation: 1,
     },
     iconButtonText : {
         color: "white",
-        fontSize: 20
-    }
+        fontSize: 20,
+    }, 
+    businessPageOptionsButtonContainer : {
+        backgroundColor: "grey",
+        borderRadius: 15,
+        shadowColor: '#470000',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.2,
+        elevation: 1,
+    },
+    businessPageOptionsButtonText : {
+        color: "white",
+        fontSize: 25,
+    },
 })

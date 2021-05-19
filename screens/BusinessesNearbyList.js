@@ -4,7 +4,7 @@ import {IconButton} from '../components/buttons'
 import Spacer from '../components/spacer'
 
 
-const BusinessNearby = props => { 
+const BusinessNearby = (props) => { 
 
     return (
         <View style = {styles.eachContainer}>
@@ -22,7 +22,7 @@ const BusinessNearby = props => {
                     <IconButton icon = "   M   "/>
                 </View>
                 <View style = {{right: 22}}>
-                    <Text style = {styles.eachContainerLine1Text}> {props.title}</Text>
+                    <Text style = {styles.eachContainerLine1Text}> {props.business.title}</Text>
                 </View>
             </View>
             <Spacer height = {8} />
@@ -31,7 +31,7 @@ const BusinessNearby = props => {
                     <IconButton icon = "   C   "/>
                 </View>
                 <View style = {{right: 22}}>
-                    <Text style = {styles.eachContainerLine2Text}> {props.type} - {props.distance} miles</Text>
+                    <Text style = {styles.eachContainerLine2Text}> {props.business.type} - {props.business.distance} miles</Text>
                 </View>
             </View>
             <Spacer height = {15} />
@@ -70,7 +70,7 @@ const BusinessesNearbyList = () => {
             style = {styles.listContainer}
             data = {CUR_BUSINESSES}
             keyExtractor = {item => item.username}
-            renderItem = {({ item }) => <BusinessNearby title = {item.title} type = {item.type} distance = {item.distance} />}
+            renderItem = {({ item }) => <BusinessNearby business = {item} />}
             />
         </View>
     )
