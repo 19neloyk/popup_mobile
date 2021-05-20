@@ -39,36 +39,14 @@ const BusinessNearby = (props) => {
     )
 }
 
-const CUR_BUSINESSES = [
-    {
-        username: 'halol',
-        title: 'The Halal Guys',
-        type: 'Food',
-        distance: 0.2,
-        phonenumber: '718-396-1895'
-    },
-    {
-        username: 'johnnygarage',
-        title: 'Johnnys Garage Sale',
-        type: 'General',
-        distance: 0.5,
-    },
-    {
-        username: 'runawayny',
-        title: 'Runaway New York',
-        type: 'Clothing',
-        distance: 1.2,
-    },
-];
-
-const BusinessesNearbyList = () => {
+const BusinessesNearbyList = (props) => {
 
 
     return (
         <View style = {styles.mainContainer}>
             <FlatList
             style = {styles.listContainer}
-            data = {CUR_BUSINESSES}
+            data = {props.business}
             keyExtractor = {item => item.username}
             renderItem = {({ item }) => <BusinessNearby business = {item} />}
             />

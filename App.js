@@ -4,6 +4,7 @@ import {SafeAreaView } from 'react-native';
 import WelcomePage from './screens/WelcomePage'
 import BusinessLoginPage from './screens/BusinessLoginPage'
 import BusinessesNearbyList from './screens/BusinessesNearbyList'
+import BusinessViewPage from './screens/BusinessViewPage'
 
 const CUR_BUSINESSES = [
   {
@@ -55,7 +56,8 @@ export default function App() {
 
   return (
     <SafeAreaView style = {{flex: 10}}>
-      <BusinessesNearbyList business = {CUR_BUSINESSES}/>
+      <BusinessViewPage business = {CUR_BUSINESSES[0]}/>
+
       <StatusBar style="auto" />
     </SafeAreaView>
   );

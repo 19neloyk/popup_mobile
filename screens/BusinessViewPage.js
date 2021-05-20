@@ -16,21 +16,22 @@ const BusinessViewPage = (props) => {
                     <Text style = {styles.overImageSubheaderText}>{props.business.type} - {props.business.distance} miles</Text>
                 </View>
             </ImageBackground>
-            <View style = {styles.buttonLine}>
-                <BusinessPageOptionsButton text = "Call" />
-                <BusinessPageOptionsButton text = "View Location" />
+            <View style = {styles.buttonsLine}>
+                <BusinessPageOptionsButton text = " Call " />
+                <BusinessPageOptionsButton text = " View Location " />
             </View>
             <View style = {styles.menuHeaderContainer}>
                 <Text style = {styles.menuHeaderText}> Menu </Text>
             </View>
 
-            <FlatList
-            style = {styles.menuListItem}
-            data = {props.business.menu}
-            keyExtractor = {item => item.username}
-            renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
-            />
-
+            <View styles = {styles.listOuterView}>
+                <FlatList
+                style = {styles.menuListItem}
+                data = {props.business.menu}
+                keyExtractor = {item => item.name}
+                renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
+                />
+            </View>
         </View>
     )
 }
@@ -63,20 +64,28 @@ const MenuItemDisplay = (props) => {
 const styles = StyleSheet.create({
     container : {
         backgroundColor : "white",
+        flex:1
     },
     mainImage : {
         height: 250,
         width: "100%",
-        flexDirection : "column",
-        justifyContent: "flex-end",
-        alignContent: "flex-end"
+        flexDirection : "row-reverse",
+        justifyContent: "flex-start",
+        alignItems: "flex-end",
+        marginBottom: 15,
+        borderBottomWidth: 1,
     },
     containerOverImage : {
         flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-end", 
         backgroundColor: "white",
         borderColor: "gray",
         borderWidth: 0.7,
-
+        height: 65,
+        width: "60%",
+        padding: 5,
+        right: -8
     },
     overImageHeaderText : {
         fontSize: 25,
@@ -88,29 +97,38 @@ const styles = StyleSheet.create({
     },
     buttonsLine : {
         flexDirection: "row",
-        justifyContent: "stretch",
+        justifyContent: "space-evenly",
+        borderTopWidth: 1,
+        padding: 10,
     },
     menuHeaderContainer : {
         flexDirection: "row",
         justifyContent: 'flex-start',
         borderBottomWidth: 1,
+        left: 10
     },
     menuHeaderText : {
         fontSize: 25,
         fontFamily: "Helvetica Neue",
         fontWeight: 'bold',
     },
+    listOuterView: {
+        flex:10
+    },
     menuListItem : {
         padding:10,
+
     },
     menuListItemContainer : {
         borderWidth:0.7,
         flexDirection: "column",
         justifyContent: "flex-start",
+        marginBottom: 5
     },
     menuListItemContainerLine1 : {
         flexDirection: "row",
         justifyContent: "flex-start",
+        padding : 7
     },
     menuListItemContainerLine1NameText: {
         fontFamily: "Helvetica Neue",
@@ -119,20 +137,26 @@ const styles = StyleSheet.create({
     menuListItemContainerLine2 :{
         flexDirection: "row",
         justifyContent: "space-around",
+        padding: 10
     },
     menuListItemContainerLine2PriceContainer : {
         flexDirection: "column",
         justifyContent: "center",
-        borderRightWidth : 1,
+        alignItems: 'center',
+        borderRightWidth : 3,
+        width: 100, 
+        padding: 7,
     },
     menuListItemContainerLine2PriceText : {
         fontFamily: "Helvetica Neue",
         fontSize : 17,
     },
     menuListItemContainerLine2DescriptionContainer: {
-        flexDirection: "column",
+        flexDirection: "row",
         justifyContent: "flex-start",
         flexWrap: "wrap",
+        padding: 5,
+        flex: 1
     } 
 })
 
