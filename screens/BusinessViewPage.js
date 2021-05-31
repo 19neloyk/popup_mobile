@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, FlatList, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableWithoutFeedback } from 'react-native';
 import {BusinessPageOptionsButton} from '../components/buttons'
 import Spacer from '../components/spacer'
 
@@ -7,31 +7,37 @@ const BusinessViewPage = (props) => {
 
     return (
         <View style = {styles.container}>
-            <ImageBackground 
-            source = {(require('../sample-images/template-logo.jpg'))}
-            style = {styles.mainImage}
-            >
+
+            <View style = {styles.imageContainer}>
+                <Image 
+                source = {(require('../sample-images/template-logo.jpg'))}
+                style = {styles.image}
+                 />
                 <View style = {styles.containerOverImage}>
                     <Text style = {styles.overImageHeaderText}>{props.business.title}</Text>
                     <Text style = {styles.overImageSubheaderText}>{props.business.type} - {props.business.distance} miles</Text>
                 </View>
-            </ImageBackground>
-            <View style = {styles.buttonsLine}>
-                <BusinessPageOptionsButton text = " Call " />
-                <BusinessPageOptionsButton text = " View Location " />
-            </View>
-            <View style = {styles.menuHeaderContainer}>
-                <Text style = {styles.menuHeaderText}> Menu </Text>
             </View>
 
-            <View styles = {styles.listOuterView}>
-                <FlatList
-                style = {styles.menuListItem}
-                data = {props.business.menu}
-                keyExtractor = {item => item.name}
-                renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
-                />
+
+            <View style = {styles.mainContentContainer}>
+                <View style = {styles.buttonsLine}>
+                    <BusinessPageOptionsButton text = " Call " />
+                    <BusinessPageOptionsButton text = " View Location " />
+                </View>
+                <View style = {styles.menuHeaderContainer}>
+                    <Text style = {styles.menuHeaderText}> Menu </Text>
+                </View>
+
+                <View style = {styles.listOuterView}>
+                    <FlatList
+                    data = {props.business.menu}
+                    keyExtractor = {item => item.name}
+                    renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
+                    />
+                </View> 
             </View>
+
         </View>
     )
 }
@@ -63,29 +69,37 @@ const MenuItemDisplay = (props) => {
 
 const styles = StyleSheet.create({
     container : {
-        backgroundColor : "white",
-        flex:1
-    },
-    mainImage : {
-        height: 250,
-        width: "100%",
-        flexDirection : "row-reverse",
+        flex: 1,
+        flexDirection: "column",
         justifyContent: "flex-start",
-        alignItems: "flex-end",
-        marginBottom: 15,
+        backgroundColor : "white",
+    },
+    imageContainer : {
+        flex: 1,
+        flexDirection : "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
         borderBottomWidth: 1,
     },
+    image : {
+        flex : 1,
+        aspectRatio: 2.5,
+        resizeMode: "contain",
+    },
     containerOverImage : {
+        position: "absolute",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "flex-end", 
         backgroundColor: "white",
         borderColor: "gray",
-        borderWidth: 0.7,
-        height: 65,
-        width: "60%",
-        padding: 5,
-        right: -8
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 2,
+        right: 8,
+        bottom: 10,
+        flex : 1,
     },
     overImageHeaderText : {
         fontSize: 25,
@@ -95,17 +109,26 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: "Helvetica Neue",
     },
+    mainContentContainer : {
+        flex: 2,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        paddingHorizontal: 8
+    },
     buttonsLine : {
+        flex: 1,
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
         borderTopWidth: 1,
         padding: 10,
     },
     menuHeaderContainer : {
+        flex: 0.5,
         flexDirection: "row",
         justifyContent: 'flex-start',
-        borderBottomWidth: 1,
-        left: 10
+        alignItems: "flex-end",
+        padding: 8,
+
     },
     menuHeaderText : {
         fontSize: 25,
@@ -113,17 +136,22 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     listOuterView: {
-        flex:10
+        flex:5,
+        flexDirection: "row",
+        paddingHorizontal: 8,
+        borderTopWidth: 1
+
     },
     menuListItem : {
         padding:10,
-
+        flex: 1,
     },
     menuListItemContainer : {
         borderWidth:0.7,
         flexDirection: "column",
         justifyContent: "flex-start",
-        marginBottom: 5
+        marginBottom: 5,
+        flex: 1
     },
     menuListItemContainerLine1 : {
         flexDirection: "row",

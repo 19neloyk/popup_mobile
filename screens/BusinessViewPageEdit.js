@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, FlatList, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import {BusinessPageOptionsButton} from '../components/buttons'
 import Spacer from '../components/spacer'
 
@@ -8,46 +8,46 @@ const BusinessViewPageEdit = (props) => {
         <KeyboardAvoidingView 
             behavior = {Platform.OS === "ios" ? "padding" : "height"}
             style = {styles.container}>
-            <ImageBackground 
-            source = {(require('../sample-images/template-logo.jpg'))}
-            style = {styles.mainImage}
-            >
+            <TouchableOpacity style = {styles.editContainerOverImage} >
+                    <BusinessPageOptionsButton text = {"Save"} />
+            </TouchableOpacity>
+            <View style = {styles.imageContainer}>
+                <Image 
+                source = {(require('../sample-images/template-logo.jpg'))}
+                style = {styles.image}
+                 />
                 <View style = {styles.containerOverImage}>
                     <Text style = {styles.overImageHeaderText}>{props.business.title}</Text>
                     <Text style = {styles.overImageSubheaderText}>{props.business.type} - {props.business.distance} miles</Text>
                 </View>
-                <TouchableOpacity style = {styles.editContainerOverImage} >
-                    <Text style = {styles.editOverImageText}> Save</Text>
-                 </TouchableOpacity>
-            </ImageBackground>
-            <View style = {styles.buttonsLine}>
-                <Text style = {{fontSize: 20,}}> Included Phone number: </Text>
-                <View style = {{borderWidth: 0.7}}>
-                <TextInput 
-                        style = {styles.menuListItemContainerLine1}
-                         /*onChangeText = {}*/
-                         value = {props.business.phonenumber} 
-                         placeholder = " Enter phonenumber here"
-                />
-                </View>
-            </View>
-            <View style = {styles.menuHeaderContainer}>
-                <Text style = {styles.menuHeaderText}> Menu </Text>
             </View>
 
-            <View styles = {styles.listOuterView}>
-                <FlatList
-                style = {styles.menuListItem}
-                data = {props.business.menu}
-                keyExtractor = {item => item.name}
-                renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
-                />
+
+            <View style = {styles.mainContentContainer}>
+                <View style = {styles.buttonsLine}>
+                    <Text style = {{fontSize: 20,}}> Included Phone number: </Text>
+                    <View style = {{borderWidth: 0.7}}>
+                    <TextInput 
+                            style = {styles.menuListItemContainerLine1}
+                            /*onChangeText = {}*/
+                            value = {props.business.phonenumber} 
+                            placeholder = " Enter phonenumber here"
+                    />
+                    </View>
+                </View>
+                <View style = {styles.menuHeaderContainer}>
+                    <Text style = {styles.menuHeaderText}> Menu </Text>
+                </View>
+
+                <View style = {styles.listOuterView}>
+                    <FlatList
+                    data = {props.business.menu}
+                    keyExtractor = {item => item.name}
+                    renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
+                    />
+                </View> 
             </View>
-            <View 
-            /*This (what is under) is used to take up the extra space at 
-            the bottom from flex-end of the outer container. Look at:
-            https://medium.com/@nickyang0501/keyboardavoidingview-not-working-properly-c413c0a200d4 */
-            style = {{flex:1}} /> 
+
         </KeyboardAvoidingView>
     )
 }
@@ -86,48 +86,44 @@ const MenuItemDisplay = (props) => {
 
 const styles = StyleSheet.create({
     container : {
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
         backgroundColor : "white",
-        flex:1,
-        justifyContent: "flex-end"
     },
-    mainImage : {
-        height: 250,
-        width: "100%",
-        flexDirection : "row-reverse",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-        marginBottom: 15,
+    imageContainer : {
+        borderTopWidth: 1,
+        flex: 1,
+        flexDirection : "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
         borderBottomWidth: 1,
     },
-    editContainerOverImage : {
-        flexDirection: "column",
-        justifyContent: "space-around",
-        alignSelf: "flex-start", 
-        backgroundColor: "white",
-        borderColor: "gray",
-        borderWidth: 2,
-        padding: 7,
-        left: -10,
-        top: 20, 
-        borderRadius: 15
-
-    },
-    editOverImageText : {
-        fontSize: 25,
-        fontFamily: "Helvetica Neue",
-        color: "blue"
+    image : {
+        flex : 1,
+        aspectRatio: 2.5,
+        resizeMode: "contain",
     },
     containerOverImage : {
+        position: "absolute",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "flex-end", 
         backgroundColor: "white",
         borderColor: "gray",
-        borderWidth: 0.7,
-        height: 65,
-        width: "60%",
-        padding: 5,
-        right: -8
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 2,
+        right: 8,
+        bottom: 10,
+        flex : 1,
+    },
+    editContainerOverImage : {
+        paddingTop : 10,
+        alignSelf: "center",
+        right: 8,
+        bottom: 10,
     },
     overImageHeaderText : {
         fontSize: 25,
@@ -137,17 +133,26 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: "Helvetica Neue",
     },
+    mainContentContainer : {
+        flex: 2,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        paddingHorizontal: 8
+    },
     buttonsLine : {
+        flex: 1,
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
         borderTopWidth: 1,
         padding: 10,
     },
     menuHeaderContainer : {
+        flex: 0.5,
         flexDirection: "row",
         justifyContent: 'flex-start',
-        borderBottomWidth: 1,
-        left: 10
+        alignItems: "flex-end",
+        padding: 8,
+
     },
     menuHeaderText : {
         fontSize: 25,
@@ -155,17 +160,22 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     listOuterView: {
-        flex:10
+        flex:5,
+        flexDirection: "row",
+        paddingHorizontal: 8,
+        borderTopWidth: 1
+
     },
     menuListItem : {
         padding:10,
-
+        flex: 1,
     },
     menuListItemContainer : {
         borderWidth:0.7,
         flexDirection: "column",
         justifyContent: "flex-start",
-        marginBottom: 5
+        marginBottom: 5,
+        flex: 1
     },
     menuListItemContainerLine1 : {
         flexDirection: "row",

@@ -13,7 +13,7 @@ const CUR_BUSINESSES = [
       title: 'The Halal Guys',
       type: 'Food',
       distance: 0.2,
-      phonenumber: '718-396-1895',
+      phonenumber: '7183961895',
       menu: [
         {
           name : "Chicken Over Rice",
@@ -56,9 +56,8 @@ const CUR_BUSINESSES = [
 export default function App() {
 
   return (
-    <SafeAreaView style = {{flex: 10}}>
+    <SafeAreaView style = {{flex: 1}}>
       <BusinessViewPageEdit business = {CUR_BUSINESSES[0]}/>
-
       <StatusBar style="auto" />
     </SafeAreaView>
   );
