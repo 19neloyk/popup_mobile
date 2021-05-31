@@ -4,6 +4,12 @@ import {BusinessPageOptionsButton} from '../components/buttons'
 import Spacer from '../components/spacer'
 
 const BusinessViewPageEdit = (props) => {
+
+    //I have no idea what to make the useState in this case yet
+    //The bottom is actually copy-pasted from the login screen
+    const [usernameText, onChangeUsernameText] = React.useState("");
+    const [passwordText, onChangePasswordText] = React.useState("");
+
     return (
         <KeyboardAvoidingView 
             behavior = {Platform.OS === "ios" ? "padding" : "height"}
@@ -17,8 +23,31 @@ const BusinessViewPageEdit = (props) => {
                 style = {styles.image}
                  />
                 <View style = {styles.containerOverImage}>
-                    <Text style = {styles.overImageHeaderText}>{props.business.title}</Text>
-                    <Text style = {styles.overImageSubheaderText}>{props.business.type} - {props.business.distance} miles</Text>
+                    <View style = {{flex : 1, flexDirection : "row", justifyContent : "space-between", paddingVertical: 5}}>
+                        <Text style = {styles.overImageHeaderText}>Title: </Text> 
+                        <View style = {{borderWidth: 0.7}}>
+
+                        <TextInput 
+                            style = {styles.menuListItemContainerLine}
+                            /*onChangeText = {}*/
+                            value = {props.business.title} 
+                            placeholder = " Food"
+                        />
+                        </View>
+                        
+                    </View>
+                    <View style = {{flex : 1, flexDirection : "row", justifyContent : "space-between", paddingVertical: 5}}> 
+                        <Text style = {styles.overImageHeaderText}>Type: </Text> 
+                        <View style = {{borderWidth: 0.7}}>
+                            
+                        <TextInput 
+                            style = {styles.menuListItemContainerLine}
+                            /*onChangeText = {}*/
+                            value = {props.business.type} 
+                            placeholder = " Food"
+                        />
+                        </View>
+                    </View>
                 </View>
             </View>
 
@@ -28,7 +57,7 @@ const BusinessViewPageEdit = (props) => {
                     <Text style = {{fontSize: 20,}}> Included Phone number: </Text>
                     <View style = {{borderWidth: 0.7}}>
                     <TextInput 
-                            style = {styles.menuListItemContainerLine1}
+                            style = {styles.menuListItemContainerLine}
                             /*onChangeText = {}*/
                             value = {props.business.phonenumber} 
                             placeholder = " Enter phonenumber here"
@@ -59,26 +88,39 @@ const MenuItemDisplay = (props) => {
     const [passwordText, onChangePasswordText] = React.useState("");
     return (
         <View style = {styles.menuListItemContainer}>
+                    <View style = {styles.menuListItemContainerLine}>        
+                    <Text style = {styles.overImageHeaderText}>Item Name:   </Text>
                     <TextInput
-                         style = {styles.menuListItemContainerLine1}
+                         style = {{borderWidth: 1, padding: 3}}
                          onChangeText = {onChangePasswordText}
                          value = {props.menuItem.name} 
                          placeholder = " Enter item name here"
                     />
-                <View style = {styles.menuListItemContainerLine2}>
+                    </View>
+                <View style = {styles.menuListItemContainerLine}>
+                <Text style = {styles.overImageHeaderText}>Price:   </Text>
+                        <View style = {styles.menuListItemContainerLine2PriceContainer}>
                         <TextInput
-                            style = {styles.menuListItemContainerLine2PriceContainer}
+                            style = {{borderWidth: 1, padding: 3}}
                             onChangeText = {onChangePasswordText}
                             value = {props.menuItem.price.toString()} 
                             placeholder = " Enter price here"
                         />
-
+                        </View>
+                </View>
+                <View style = {styles.menuListItemContainerLine}>
+                    <Text style = {styles.overImageHeaderText}>Description:</Text>
+                </View>
+                <View style = {styles.menuListItemContainerLineLast}>
+                        <View style = {styles.menuListItemContainerLine2DescriptionContainer}>            
                         <TextInput
-                            style = {styles.menuListItemContainerLine2DescriptionContainer}
+                            multiline = {true}
+                            style = {{borderWidth: 1, padding: 3}}
                             onChangeText = {onChangePasswordText}
                             value = {props.menuItem.description} 
                             placeholder = " Enter Description Here"
                         />
+                        </View>
                 </View>
             </View>
     )
@@ -126,7 +168,7 @@ const styles = StyleSheet.create({
         bottom: 10,
     },
     overImageHeaderText : {
-        fontSize: 25,
+        fontSize: 20,
         fontFamily: "Helvetica Neue",
     },
     overImageSubheaderText : {
@@ -177,27 +219,24 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         flex: 1
     },
-    menuListItemContainerLine1 : {
+    menuListItemContainerLine : {
         flexDirection: "row",
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
         padding : 7
+    },
+    menuListItemContainerLineLast : {
+        alignSelf: "flex-end",
+        padding : 4
     },
     menuListItemContainerLine1NameText: {
         fontFamily: "Helvetica Neue",
         fontSize : 20,
     }, 
-    menuListItemContainerLine2 :{
-        flexDirection: "row",
-        justifyContent: "space-around",
-        padding: 10
-    },
     menuListItemContainerLine2PriceContainer : {
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: 'center',
-        borderRightWidth : 3,
+        alignItems: 'flex-end',
         width: 100, 
-        padding: 7,
     },
     menuListItemContainerLine2PriceText : {
         fontFamily: "Helvetica Neue",
@@ -208,8 +247,8 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         flexWrap: "wrap",
         padding: 5,
-        flex: 1
-    } 
+        width : 300
+    },
 })
 
 
