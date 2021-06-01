@@ -111,6 +111,22 @@ export class BusinessPageOptionsButton extends Component {
     }
 }
 
+export class RegisterButton extends Component {
+    makeAlert () {
+        alert("YES")
+    }
+
+    render () {
+        return (
+            <TouchableOpacity onPress = {this.makeAlert} >
+                <View style = {styles.businessPageOptionsButtonContainer}>
+                  <Text style = {styles.businessPageOptionsButtonText}> Register </Text>
+                </View>
+            </TouchableOpacity> 
+        )
+    }
+}
+
 
 
 const styles = StyleSheet.create({
@@ -172,5 +188,17 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 28,
     },
-
+    registerButtonContainer : {
+        backgroundColor: "grey",
+        borderRadius: 100000,
+        shadowColor: '#470000',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.2,
+        elevation: 1,
+        padding : 6,
+    },
+    registerButtonText : {
+        color: "white",
+        fontSize: 28,
+    },
 })

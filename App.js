@@ -6,6 +6,7 @@ import BusinessLoginPage from './screens/BusinessLoginPage'
 import BusinessesNearbyList from './screens/BusinessesNearbyList'
 import BusinessViewPage from './screens/BusinessViewPage'
 import BusinessViewPageEdit from './screens/BusinessViewPageEdit'
+import BusinessRegisterPage from './screens/BusinessRegisterPage'
 
 const CUR_BUSINESSES = [
   {
@@ -57,7 +58,7 @@ export default function App() {
 
   return (
     <SafeAreaView style = {{flex: 1}}>
-      <BusinessesNearbyList business = {CUR_BUSINESSES}/>
+      <BusinessRegisterPage />
       <StatusBar style="auto" />
     </SafeAreaView>
   );

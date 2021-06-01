@@ -103,7 +103,7 @@ const MenuItemDisplay = (props) => {
                     <View style = {{flexDirection: "column", justifyContent : "flex-start", alignContent : "center"}}>
                         <Spacer height = {10} /> 
                         <View style = {{alignSelf: "flex-start", marginHorizontal : 6}}>
-                        <DeleteButton size = {10} />
+                        <DeleteButton fontSize = {10} />
                         </View>
                         <Spacer height = {5} />
                     </View>
