@@ -53,7 +53,43 @@ export class IconButton extends Component {
         return (
             <TouchableOpacity onPress = {this.makeAlert} >
                 <View style = {styles.iconButtonContainer}>
-                    <Text style = {styles.iconButtonText}> {this.props.icon} </Text>
+                    <Text style = { {color: "white", fontSize: this.props.fontSize} }> 
+                    {this.props.icon} 
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
+
+export class CircularIconButton extends Component {
+    makeAlert() {
+        alert("YES")
+    }    
+    render(){
+        return (
+            <TouchableOpacity onPress = {this.makeAlert} >
+                <View style = {styles.circularIconButtonContainer}>
+                    <Text style = { {color: "white", fontSize: this.props.fontSize} }> 
+                    {this.props.icon} 
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
+
+export class DeleteButton extends Component {
+    makeAlert() {
+        alert("YES")
+    }    
+    render(){
+        return (
+            <TouchableOpacity onPress = {this.makeAlert} >
+                <View style = {styles.deleteButtonContainer}>
+                    <Text style = { {color: "white", fontSize: this.props.fontSize} }> 
+                    Delete
+                    </Text>
                 </View>
             </TouchableOpacity>
         );
@@ -103,11 +139,26 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.2,
         elevation: 1,
-    },
-    iconButtonText : {
-        color: "white",
-        fontSize: 20,
+        padding : 6,
     }, 
+    circularIconButtonContainer : {
+        backgroundColor: "grey",
+        borderRadius: 100000,
+        shadowColor: '#470000',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.2,
+        elevation: 1,
+        padding : 6,
+    },
+    deleteButtonContainer : {
+        backgroundColor: "red",
+        borderRadius: 100000,
+        shadowColor: '#470000',
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.2,
+        elevation: 1,
+        padding : 6,
+    },
     businessPageOptionsButtonContainer : {
         backgroundColor: "grey",
         borderRadius: 15,
@@ -121,4 +172,5 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 28,
     },
+
 })

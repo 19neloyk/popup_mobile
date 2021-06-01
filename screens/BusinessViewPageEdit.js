@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
-import {BusinessPageOptionsButton} from '../components/buttons'
+import {BusinessPageOptionsButton, CircularIconButton, DeleteButton} from '../components/buttons'
 import Spacer from '../components/spacer'
 
 const BusinessViewPageEdit = (props) => {
@@ -72,6 +72,18 @@ const BusinessViewPageEdit = (props) => {
                     <FlatList
                     data = {props.business.menu}
                     keyExtractor = {item => item.name}
+                    ListHeaderComponent = {
+                    <View style = {{flexDirection: "column",alignItems : "center", justifyContent : "flex-start"}}>
+                    <Spacer height = {15} />
+                    </View>
+                    }
+                    ListFooterComponent = {
+                    <View style = {{flexDirection: "column",alignItems : "center", justifyContent : "flex-start"}}>
+                    <Spacer height = {10} />
+                    <CircularIconButton icon = "  +  " fontSize = {40}/>
+                    <Spacer height = {10} />
+                    </View>
+                    }
                     renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
                     />
                 </View> 
@@ -88,6 +100,13 @@ const MenuItemDisplay = (props) => {
     const [passwordText, onChangePasswordText] = React.useState("");
     return (
         <View style = {styles.menuListItemContainer}>
+                    <View style = {{flexDirection: "column", justifyContent : "flex-start", alignContent : "center"}}>
+                        <Spacer height = {10} /> 
+                        <View style = {{alignSelf: "flex-start", marginHorizontal : 6}}>
+                        <DeleteButton size = {10} />
+                        </View>
+                        <Spacer height = {5} />
+                    </View>
                     <View style = {styles.menuListItemContainerLine}>        
                     <Text style = {styles.overImageHeaderText}>Item Name:   </Text>
                     <TextInput

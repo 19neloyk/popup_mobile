@@ -7,7 +7,6 @@ const BusinessViewPage = (props) => {
 
     return (
         <View style = {styles.container}>
-
             <View style = {styles.imageContainer}>
                 <Image 
                 source = {(require('../sample-images/template-logo.jpg'))}
@@ -32,6 +31,11 @@ const BusinessViewPage = (props) => {
                 <View style = {styles.listOuterView}>
                     <FlatList
                     data = {props.business.menu}
+                    ListHeaderComponent = {
+                        <View style = {{flexDirection: "column",alignItems : "center", justifyContent : "flex-start"}}>
+                        <Spacer height = {15} />
+                        </View>
+                        }
                     keyExtractor = {item => item.name}
                     renderItem = {({ item }) => <MenuItemDisplay menuItem = {item}/>}
                     />
@@ -50,13 +54,11 @@ const MenuItemDisplay = (props) => {
                     <Text style = {styles.menuListItemContainerLine1NameText}>
                         {props.menuItem.name}
                     </Text>
+                    <Text style = {styles.menuListItemContainerLine2PriceText}>
+                            {props.menuItem.price}
+                    </Text>
                 </View>
                 <View style = {styles.menuListItemContainerLine2}>
-                    <View style = {styles.menuListItemContainerLine2PriceContainer}>
-                        <Text style = {styles.menuListItemContainerLine2PriceText}>
-                            {props.menuItem.price}
-                        </Text>
-                    </View>
                     <View style = {styles.menuListItemContainerLine2DescriptionContainer}>
                         <Text style = {styles.menuListItemContainerLine2DescriptionContainer}>
                             {props.menuItem.description}
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         justifyContent: "flex-start",
-        backgroundColor : "white",
+        backgroundColor : "lavender",
     },
     imageContainer : {
         flex: 1,
@@ -136,27 +138,32 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     listOuterView: {
-        flex:5,
+        flex: 6,
         flexDirection: "row",
-        paddingHorizontal: 8,
-        borderTopWidth: 1
+        paddingHorizontal: 0,
+        borderTopWidth: 1,
 
     },
     menuListItem : {
-        padding:10,
+        padding:12,
         flex: 1,
     },
     menuListItemContainer : {
-        borderWidth:0.7,
         flexDirection: "column",
         justifyContent: "flex-start",
-        marginBottom: 5,
-        flex: 1
+        marginBottom: 15,
+        flex: 1,
+        borderRadius : 15,
+        backgroundColor : "#c7c5de",
+        shadowColor: '#470000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.2,
+        elevation: 1,
     },
     menuListItemContainerLine1 : {
         flexDirection: "row",
-        justifyContent: "flex-start",
-        padding : 7
+        justifyContent: "space-between",
+        padding : 10
     },
     menuListItemContainerLine1NameText: {
         fontFamily: "Helvetica Neue",
@@ -178,12 +185,12 @@ const styles = StyleSheet.create({
     menuListItemContainerLine2PriceText : {
         fontFamily: "Helvetica Neue",
         fontSize : 17,
+        fontWeight : "bold",
     },
     menuListItemContainerLine2DescriptionContainer: {
         flexDirection: "row",
         justifyContent: "flex-start",
         flexWrap: "wrap",
-        padding: 5,
         flex: 1
     } 
 })

@@ -18,12 +18,12 @@ const CUR_BUSINESSES = [
         {
           name : "Chicken Over Rice",
           price: 6.99,
-          description: "Very Tasty Chicken Over Rice Very Tasty Chicken Over Rice Very Tasty Chicken Over Rice Very Tasty Chicken Over Rice"
+          description: "Very good chicken over rice that can be served with an extra of hot sauce (made Meditteranean) or white sauce. This is halal and contains almost no common allergies."
         },
         {
           name : "Beef Over Rice",
           price: 7.99,
-          description: "Very Tasty Beef Over Rice Very Tasty Beef Over Rice Very Tasty Beef Over Rice Very Tasty Beef Over Rice"
+          description: "Very good beef over rice that can be served with an extra of hot sauce (made Meditteranean) or white sauce. This is halal and contains almost no common allergies. However, not that this product contains beef, so your religion may not agree with it."
         },
       ],
   },
@@ -57,7 +57,7 @@ export default function App() {
 
   return (
     <SafeAreaView style = {{flex: 1}}>
-      <BusinessViewPageEdit business = {CUR_BUSINESSES[0]}/>
+      <BusinessesNearbyList business = {CUR_BUSINESSES}/>
       <StatusBar style="auto" />
     </SafeAreaView>
   );

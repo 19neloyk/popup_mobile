@@ -18,21 +18,11 @@ const BusinessNearby = (props) => {
             <Spacer height = {15} />
 
             <View style = {styles.eachContainerLine}>
-                <View style = {{left: 22}}>
-                    <IconButton icon = "   M   "/>
-                </View>
-                <View style = {{right: 22}}>
-                    <Text style = {styles.eachContainerLine1Text}> {props.business.title}</Text>
-                </View>
+                <Text style = {styles.eachContainerLine1Text}> {props.business.title}</Text>
             </View>
             <Spacer height = {8} />
             <View style = {styles.eachContainerLine}>
-                <View style = {{left: 22}}>
-                    <IconButton icon = "   C   "/>
-                </View>
-                <View style = {{right: 22}}>
-                    <Text style = {styles.eachContainerLine2Text}> {props.business.type} - {props.business.distance} miles</Text>
-                </View>
+                <Text style = {styles.eachContainerLine2Text}> {props.business.type} - {props.business.distance} miles</Text>
             </View>
             <Spacer height = {15} />
         </View>
@@ -61,13 +51,14 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         backgroundColor: "#c7c5de",
         justifyContent : 'flex-start',
-        flex:10
+        flex:1
     },
     listContainer : {
-        padding:10,
-        flex:10,
+        padding:3,
+        flex:1,
     },
     eachContainer : {
+        flex : 1,
         flexDirection : "column",
         backgroundColor: "lavender",
         borderRadius: 11,
@@ -77,24 +68,23 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         elevation: 1,
 
-        marginBottom : 20
+        marginBottom : 12
     },
     eachImageContainer: {
+        flex : 1,
         flexDirection: "row",
         justifyContent: "center",
-        shadowColor: '#470000',
-        shadowOffset: {width: -1, height: 1},
-        shadowOpacity: 0.2,
-        elevation: 1,
+
     },
     eachImage : {
+        flex : 1,
         height: 200,
-        width: "90%",
         borderRadius: 15,
     },
     eachContainerLine: {
         flexDirection : "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
+        paddingHorizontal: 20
     },
     eachContainerLine1Text: {
         fontFamily: "Helvetica Neue",
